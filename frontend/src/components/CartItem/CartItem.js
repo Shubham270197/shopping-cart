@@ -1,9 +1,15 @@
 import './CartItem.css'
+import { Link } from 'react-router-dom'
 
 const CartItem = () => {
     return (
         <div className="cartItem">
-            CartItems
+            <div className="cartItem__image">
+                <img src="" alt="" />
+            </div>
+
+            <Link>
+            </Link>
         </div>
     )
 }
