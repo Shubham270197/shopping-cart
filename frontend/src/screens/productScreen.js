@@ -1,6 +1,31 @@
 import './productScreen.css'
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
-const ProductScreen = () => {
+//Actions
+import { getProductDetails } from '../redux/actions/productActions'
+import { addToCart } from '../redux/actions/cartActions'
+//import Product from '../../../backend/models/Product'
+
+const ProductScreen = ({ match, history }) => {
+
+    const [qty, updateQty] = useState(1)
+    const dispatch = useDispatch()
+
+    const productDetail = useSelector(state => state.getProductDetails)
+
+    const {
+        loading,
+        error,
+        product
+    } = productDetail
+
+    useEffect(() => {
+        if(product && match.params.id !== product._id ) {
+            dispatch(getProductDetails(match.params.id))
+        }
+    }, [dispatch, match, product])
+    
     return (
         <div className="productScreen">
             <div className="productScreen__left">

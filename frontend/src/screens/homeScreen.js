@@ -13,8 +13,9 @@ const HomeScreen = () => {
     const getProducts = useSelector(state => state.getProducts)
 
     const {
-        Products,
-        loading
+        products,
+        loading,
+        error
     } = getProducts
 
     useEffect(() => {
@@ -30,18 +31,20 @@ const HomeScreen = () => {
         <div className="homeScreen">
             <h2 className="homeScreen__title">Latest Products</h2>
             <div className="homeScreen__products">
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
-                <Product />
+               {loading ? (
+                    <h2>loading...</h2>
+                ) : error ? (
+                    <h2>{error}</h2>
+                ) : (
+                    products.map(product => <Product
+                        key={product._id}
+                        productId={product._id}
+                        name={product.name}
+                        imageUrl={product.imageUrl}
+                        price={product.price}
+                        description={product.description}
+                        />)
+                )}
             </div>
         </div>
     )

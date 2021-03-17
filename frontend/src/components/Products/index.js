@@ -1,23 +1,23 @@
 import './products.css';
 import {  Link } from 'react-router-dom'
 
-const Product = () => {
+const Product = ({ name, productId, key, imageUrl, price, description }) => {
+    console.log("yes buddy = ", name)
     const userfirstname = JSON.parse(localStorage.getItem('information'))
     console.log("data is = ", userfirstname)
     return (
         <div className="product">
-            <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db?ixid=MXwxMjA3fDB8MHxwaG90by1wYWd1fHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=fomat&fit=crop&w=1352&q=80" alt="product name" />
+            <img src={imageUrl} alt={name} />
 
             <div className="product__info">
-                <p className="info__name">{userfirstname.firstName}</p>
+                <p className="info__name">{name}</p>
                 <p className="info__description">
-                    this is our first product. Your leave request has been Approved by Shena Garg.
-                    Leave Rule for Confirmed employees
+                    {description.substring(0, 100)}...
                 </p>
 
-                <p className="info__price">$499.99</p>
+                <p className="info__price">${price}</p>
 
-                <Link to={`/product/${1111}`} className="info__button">View</Link>
+                <Link to={`/product/${productId}`} className="info__button">View</Link>
             </div>
         </div>
     )

@@ -17,7 +17,8 @@ export const getProductReducers = (state = { products: [] }, action) => {
         case actionTypes.GET_PRODUCTS_FAILURE:
             return {
                 loading: false,
-                products: action.payload
+                products: action.payload,
+                error: action.payload
             }
     
         default:
@@ -41,7 +42,8 @@ export const getProductDetailsReducers = (state = { product: {} }, action) => {
         case actionTypes.GET_PRODUCTS_DETAILS_FAILURE:
             return {
                 loading: false,
-                product: action.payload
+                product: action.payload,
+                error: action.payload
             }
     
         case actionTypes.GET_PRODUCTS_DETAILS_RESET:

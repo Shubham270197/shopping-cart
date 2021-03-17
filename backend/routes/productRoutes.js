@@ -13,6 +13,6 @@ router.get('/', getAllProducts);
 //@route GET /api/products
 //@access Public
 
-router.get('/', getAllProductById);
+router.get('/:id', getAllProductById);
 
 module.exports = router;
